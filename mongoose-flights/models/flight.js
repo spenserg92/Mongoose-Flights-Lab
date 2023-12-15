@@ -18,10 +18,8 @@ const flightSchema = new Schema({
     },
     departs: {
         type: Date,
-        default: ()=>{
-            const yearFromNow = new Date();
-            yearFromNow.setFullYear(yearFromNow.getFullYear() + 1);
-            return yearFromNow;
+        default: function() {
+            return new Date().getFullYear();
         }
     },
     
