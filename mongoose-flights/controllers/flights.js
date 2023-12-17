@@ -4,6 +4,12 @@ module.exports = {
     index,
     new: newFlight,
     create,
+    show,
+}
+
+async function show(req, res){
+    const flight = await Flight.findById(req.params.id).populate('destinations');
+    res.render('flights/show', { title: 'Flight Detail', flight})
 }
 
 async function create(req, res) {
