@@ -9,7 +9,8 @@ module.exports = {
 
 async function show(req, res){
     const flight = await Flight.findById(req.params.id).populate('destinations');
-    res.render('flights/show', { title: 'Flight Detail', flight})
+    const tickets = await Ticket.find({flight: flight_id })
+    res.render('flights/show', { title: 'Flight Detail', flight, tickets})
 }
 
 async function create(req, res) {
